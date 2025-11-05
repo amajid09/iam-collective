@@ -1,0 +1,37 @@
+{
+  "_pleaseNote": "Auto generated file for future use. Please do not edit",
+  "project": {
+    "name": "fa-kente-iam-collective",
+    "description": "I am collective pwa",
+    "title": "iam-collective",
+    "author": "Ayanda Buda",
+    "adoTaskNumber": "",
+    "domain": "core",
+    "features": {
+      "pipelines": true,
+      "dependabot": true,
+      "registeredInAppStore": false,
+      "gitHubOrg": "",
+      "repoName": "fa-kente-iam-collective",
+      "commandType": "create-app-feature",
+      "microServiceType": {
+        "isContainerised": false,
+        "isServerless": false
+      },
+      "isDirectusCms": false,
+      "isFeatureApp": true,
+      "isTestAutomation": false,
+      "isCustomComponent": false,
+      "isApiProxy": false,
+      "isAppContainer": false,
+      "isAppService": false
+    },
+    "template": "pwa-template"
+  },
+  "runtime": {
+    "cli": "11.2.0",
+    "node": "v22.14.0",
+    "path": "fa-kente-iam-collective"
+  },
+  "version": "11.2.0"
+}

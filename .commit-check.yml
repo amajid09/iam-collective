@@ -1,0 +1,29 @@
+checks:
+  - check: message
+    regex: '^(ci|chore|revert|feat|fix|docs|style|refactor|perf|test|build|build\(deps\)){1}(\([\w\-\.]+\))?(!)?: ([\w ])+([\s\S]*)|(Merge).*|(fixup!.*)'
+    error: "The commit message should be structured as follows:\n\n
+      <type>[optional scope]: <description>\n
+      [optional body]\n
+      [optional footer(s)]\n\n
+      More details please refer to https://www.conventionalcommits.org"
+    suggest: please check your commit message whether matches above regex
+
+  - check: branch
+    regex: ^(ci|chore|revert|feat|fix|docs|style|refactor|perf|test|build|dependabot\/[\w\-]+\/[\w\-\.]+-[\d\.]+)\/.+|(release)|(master)|(main)|(HEAD)|(PR-.+)
+    error: 'Branches must begin with these types: feat/ chore/ fix/ test/ build/'
+    suggest: run command `git checkout -b type/branch_name`
+
+  - check: author_name
+    regex: ^[A-Za-z ,.\'-_]+$|.*(\[bot])
+    error: The committer name seems invalid
+    suggest: run command `git config user.name "Your Name"`
+
+  - check: author_email
+    regex: ^\S+@\S+\.\S+$
+    error: The committer email seems invalid
+    suggest: run command `git config user.email yourname@example.com`
+
+  - check: commit_signoff
+    regex: 'Signed-off-by: [A-Za-z0-9_.-]+ <[\w.-]+@([\w-]+\.)+[\w-]{2,4}>'
+    error: Signed-off-by not found in latest commit
+    suggest: run command `git commit -m "conventional commit message" --signoff`

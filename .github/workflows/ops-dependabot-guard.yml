@@ -1,0 +1,56 @@
+name: 'PR - Dependabot Guard'
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  dependabot-guard:
+    name: 'Check Open Dependabot PRs'
+    runs-on: ubuntu-latest
+    # Skip when the actor is Dependabot itself (prevents noisy loops)
+    if: ${{ github.actor != 'dependabot[bot]' }}
+    steps:
+      - name: Count open Dependabot PRs
+        id: count
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            // Use the Search API to count open PRs from Dependabot
+            // Query: repo:<owner>/<repo> is:pr is:open author:app/dependabot
+            const q = `repo:${owner}/${repo} is:pr is:open author:app/dependabot`;
+            const per_page = 100;
+            let total = 0;
+            let page = 1;
+
+            while (true) {
+              const res = await github.rest.search.issuesAndPullRequests({ q, per_page, page });
+              total += res.data.items.length;
+              core.info(`Page ${page}: ${res.data.items.length} PRs`);
+              if (res.data.items.length < per_page) break;
+              page++;
+            }
+
+            core.info(`Total open Dependabot PRs: ${total}`);
+            core.setOutput('dependabot_pr_count', String(total));
+      - name: Enforce threshold
+        env:
+          COUNT: ${{ steps.count.outputs.dependabot_pr_count }}
+          # Use repo variable if set (Settings → Variables → DEPENDABOT_MAX_OPEN), else default to 10
+          THRESHOLD: ${{ vars.DEPENDABOT_MAX_OPEN != '' && vars.DEPENDABOT_MAX_OPEN || 10 }}
+        run: |
+          echo "🔍 Open Dependabot PRs: ${COUNT} (threshold: ${THRESHOLD})"
+          if [ -z "${COUNT}" ]; then
+            echo "❌ No count returned from the previous step."
+            exit 1
+          fi
+          if [ "${COUNT}" -gt "${THRESHOLD}" ]; then
+            echo "🚨 Too many open Dependabot PRs (${COUNT}) > ${THRESHOLD}."
+            echo "    Please merge/close some before proceeding."
+            exit 1
+          fi
+          echo "✅ Within limit (${COUNT}/${THRESHOLD})."
