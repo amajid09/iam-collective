@@ -39,7 +39,7 @@
     "@feature-hub/module-loader-commonjs": "^3.7.0",
     "@feature-hub/module-loader-federation": "^3.7.0",
     "@feature-hub/react": "^3.7.0",
-    "@mtnkente/gtm": "^1.1.0",
+    "@mtnkente/gtm": "^1.7.1",
     "@mtnkente/paragon-buttons": "^4.17.0",
     "@mtnkente/paragon-core-fonts": "^2.1.0",
     "@mtnkente/paragon-display": "^4.1.0",
