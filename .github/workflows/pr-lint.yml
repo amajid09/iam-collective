@@ -1,0 +1,27 @@
+name: 'PR - Validate Title'
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  validate-title:
+    name: 'Validate PR Title'
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v5
+      - name: Validate PR Title
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+            const pattern = /^(fix|feat|refactor|chore|ci)(\([a-zA-Z0-9-_]+\))?: .+/;
+
+            console.log(`PR Title: ${title}`);
+            console.log(`Pattern: ${pattern}`);
+
+            if (!pattern.test(title)) {
+              core.setFailed(`Invalid pull request title. Must match pattern: ${pattern}`);
+            } else {
+              console.log('Pull request title is valid.');
+            }

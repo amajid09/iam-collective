@@ -1,0 +1,26 @@
+cache:
+  dir: .cache/trivy
+
+scan:
+  skip-dirs:
+    - 'node_modules'
+    - 'dist'
+    - '.git'
+    - 'vendor'
+    - 'bin'
+    - 'build'
+  skip-files:
+    - '*.md'
+
+misconfiguration:
+  scanners:
+    - Dockerfile
+    - kubernetes
+    - helm
+    - terraform
+    - cloudformation
+
+severity:
+  - HIGH
+  - CRITICAL
+ignore-unfixed: true
