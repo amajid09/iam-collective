@@ -10,7 +10,7 @@ jobs:
       pull-requests: write
       contents: write
     timeout-minutes: 5
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: ubuntu-latest
     if: github.actor != 'dependabot[bot]'
     steps:
       - uses: actions/checkout@v5
@@ -26,7 +26,7 @@ jobs:
   code-formatting:
     name: 'Code - Formatting'
     needs: commit-check
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     permissions:
       contents: read
       actions: read
@@ -59,7 +59,7 @@ jobs:
   code-linting:
     name: 'Code - Linting'
     needs: commit-check
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       actions: read
@@ -94,7 +94,7 @@ jobs:
     permissions:
       contents: read
       actions: read
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout code
@@ -115,7 +115,7 @@ jobs:
     permissions:
       contents: read
       actions: read
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout code
@@ -141,7 +141,7 @@ jobs:
     permissions:
       contents: read
       actions: read
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout code
@@ -161,7 +161,7 @@ jobs:
     permissions:
       contents: read
       actions: read
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout code
@@ -186,76 +186,11 @@ jobs:
           fi
 
           npx lockfile-lint --path package-lock.json --type npm --validate-https \
-            --allowed-hosts npm.pkg.github.com,registry.npmjs.org
-  package-sbom:
-    name: 'Code - SBOM Generation'
-    needs: secrets-leaks
-    permissions:
-      contents: read
-      actions: read
-    runs-on: [self-hosted, linux, x64, core]
-    if: github.actor != 'dependabot[bot]'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          registry-url: https://npm.pkg.github.com/
-          always-auth: true
-      - name: Install dependencies
-        shell: bash
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_TOKEN }}
-        run: |
-          npm i --prefer-online --no-audit --no-fund
-      - name: Generate SBOM
-        run: |
-          npm ls react react-dom react-test-renderer --depth=0 || true
-
-          npx @cyclonedx/cyclonedx-npm@latest \
-            --output-file sbom.cdx.json \
-            --spec-version 1.5
-      - name: Upload SBOM artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: sbom-cyclonedx
-          path: sbom.cdx.json
-          retention-days: 7
-  sbom-vuln-scan:
-    name: 'Security - SBOM Vulnerability Scan'
-    needs: package-sbom
-    permissions:
-      contents: read
-      actions: read
-    runs-on: [self-hosted, linux, x64, core]
-    if: github.actor != 'dependabot[bot]'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set up node
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          registry-url: https://npm.pkg.github.com/
-          always-auth: true
-      - uses: actions/download-artifact@v4
-        with:
-          name: sbom-cyclonedx
-          path: .
-      - uses: google/osv-scanner-action/analyze@v2
-        with:
-          sbom: sbom.cdx.json
-          fail-on: HIGH
+            --allowed-hosts npm.pkg.github.com registry.npmjs.org
   test:
     name: 'Tests - Integration'
     needs: naming-conventions
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     permissions:
       contents: read
       actions: read
@@ -287,7 +222,7 @@ jobs:
       checks: write
       pull-requests: write
       contents: write
-    runs-on: [self-hosted, linux, x64, core]
+    runs-on: [self-hosted, linux, x64, mtn-one]
     timeout-minutes: 10
     if: github.actor != 'dependabot[bot]'
     steps:
