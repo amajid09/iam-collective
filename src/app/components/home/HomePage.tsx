@@ -1,26 +1,22 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable  @typescript-eslint/no-floating-promises */
+import { Book, Fan, GraduationCap, Heart, Home } from 'lucide-react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Home, GraduationCap, Heart, Fan, Book } from 'lucide-react';
+import Banner from '../banner/Banner';
 import {
-  ScreenContainer,
-  ImageCard,
-  BackgroundImage,
-  Card,
-  OverlayText,
-  Author,
-  ProfileImage,
-  SuggestedWrapper,
-  SuggestedTitle,
-  CardText,
-  CardHeading,
-  CardDescription,
-  CardLink,
-  LotusEmoji,
   BottomNav,
+  Card,
+  CardDescription,
+  CardHeading,
+  CardLink,
+  CardText,
   HomeIndicator,
-  Quote,
+  LotusEmoji,
+  ProfileImage,
+  ScreenContainer,
+  SuggestedTitle,
+  SuggestedWrapper,
 } from './HomePage.styled';
 
 const HomeScreen: React.FC = () => {
@@ -32,17 +28,9 @@ const HomeScreen: React.FC = () => {
 
   return (
     <ScreenContainer>
-      <ImageCard>
-        <BackgroundImage
-          src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'
-          alt='Nature background'
-        />
-        <OverlayText>
-          <Quote>This is a daily affirmation of support and positivity.</Quote>
-          <Author>– The author</Author>
-          <ProfileImage src='https://randomuser.me/api/portraits/women/44.jpg' alt='Profile' />
-        </OverlayText>
-      </ImageCard>
+      <Banner>
+        <ProfileImage src='https://randomuser.me/api/portraits/women/44.jpg' alt='Profile' />
+      </Banner>
 
       <SuggestedWrapper>
         <SuggestedTitle>Suggested for you</SuggestedTitle>

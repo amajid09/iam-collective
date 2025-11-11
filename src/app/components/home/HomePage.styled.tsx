@@ -22,11 +22,19 @@ export const ImageCard = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 `;
+export const SlideWrapper = styled.div<{ $activeIndex: number }>`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 1s ease-in-out;
+  transform: translateX(${({ $activeIndex }): string => `-${$activeIndex * 100}%`});
+`;
 
 export const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  flex-shrink: 0;
 `;
 
 export const OverlayText = styled.div`
