@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   min-height: 100vh;
   width: 100%;
-  background-color: #f3e1ff;
+  background: linear-gradient(to right, #fff0f6, #fdf0f5);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -13,32 +13,64 @@ export const Container = styled.div`
 
 export const LeftPanel = styled.div`
   flex: 1;
-  background: linear-gradient(135deg, #e6ccff, #f3e1ff);
+  background: #20A4CC;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
 
-  &::before {
-    content: '';
+  /* subtle background blobs for extra visual interest */
+  &::before,
+  &::after {
+    content: "";
     position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle, #d8b4fe, #e9d5ff, #f3e1ff);
-    opacity: 0.3;
-    transform: rotate(45deg);
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.4;
+    z-index: 0;
+  }
+
+  &::before {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -50px;
+    background: radial-gradient(circle, #E27171 0%, transparent 70%);
+  }
+
+  &::after {
+    width: 250px;
+    height: 250px;
+    bottom: 0;
+    right: -60px;
+    background: radial-gradient(circle, #20A4CC 0%, transparent 70%);
+  }
+
+  img {
+    position: relative;
+    width: 70%;
+    max-width: 320px;
+    z-index: 1;
+    border-radius: 1rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
   }
 
   @media (max-width: 768px) {
     height: 200px;
-    &::before {
+
+    &::before,
+    &::after {
       display: none;
+    }
+
+    img {
+      width: 50%;
+      max-width: 160px;
     }
   }
 `;
+
 
 export const RightPanel = styled.div`
   flex: 1;
@@ -56,7 +88,7 @@ export const RightPanel = styled.div`
 export const FormTitle = styled.h1`
   font-size: 2rem;
   font-weight: 700;
-  color: #6a0dad; 
+  color: #20A4CC;
   margin-bottom: 1rem;
 `;
 
@@ -69,44 +101,46 @@ export const Form = styled.form`
 export const Label = styled.label`
   font-size: 0.95rem;
   font-weight: 500;
-  color: #7b1fa2; 
+  color: #20A4CC;
   margin-bottom: 0.25rem;
 `;
 
 export const TextInput = styled.input`
   padding: 0.75rem 1rem;
-  border: 1px solid #cba6f7;
+  border: 1px solid #E27171;
   border-radius: 0.75rem;
   font-size: 1rem;
   color: #111827;
   outline: none;
+  background-color: #fff;
 
   &:focus {
-    border-color: #9b30ff;
-    box-shadow: 0 0 0 2px rgba(155, 48, 255, 0.2);
+    border-color: #20A4CC;
+    box-shadow: 0 3px 10px rgba(32, 164, 204, 0.15);
   }
 `;
 
 export const SelectInput = styled.select`
   padding: 0.75rem 1rem;
-  border: 1px solid #cba6f7;
+  border: 1px solid #E27171;
   border-radius: 0.75rem;
   font-size: 1rem;
   color: #111827;
   outline: none;
+  background-color: #fff;
 
   &:focus {
-    border-color: #9b30ff;
-    box-shadow: 0 0 0 2px rgba(155, 48, 255, 0.2);
+    border-color: #20A4CC;
+    box-shadow: 0 3px 10px rgba(32, 164, 204, 0.15);
   }
 `;
 
 export const SubmitButton = styled.button`
-  background-color: #9b30ff;
+  background-color: #E27171;
   color: white;
-  padding: 1rem;
-  font-size: 1.125rem;
-  font-weight: 500;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
   border-radius: 9999px;
   cursor: pointer;
@@ -114,11 +148,78 @@ export const SubmitButton = styled.button`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #7b1fa2;
+    background-color: #20A4CC;
     transform: translateY(-2px);
   }
 
   &:active {
     transform: translateY(0);
+  }
+`;
+
+export const CountrySelectWrapper = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+export const CountryDropdown = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+`;
+
+export const CountryOption = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+
+  img {
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
+  }
+`;
+
+export const CountrySelectorButton = styled.button`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+
+  &:hover {
+    border-color: #888;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  img {
+    width: 24px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
   }
 `;

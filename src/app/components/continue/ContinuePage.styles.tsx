@@ -46,25 +46,27 @@ export const OptionGroup = styled.div`
 `;
 
 export const OptionCard = styled.button`
-  background: linear-gradient(to right, #fff0f6, #f6e6ff);
-  border: 1px solid rgba(155, 48, 255, 0.15);
-  border-radius: 1rem;
-  padding: 1.25rem;
-  text-align: left;
-  box-shadow: 0 4px 14px rgba(155, 48, 255, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 100%;
+background: linear-gradient(to right, #fff0f6, #fdf0f5);
+color: #1a1a1a;
+padding: 0.75rem 1rem;  
+text-align: left;
+border-radius: 0.85rem;  
+font-size: 0.95rem;      
+font-weight: 500;
+transition: all 0.25s ease;
+box-shadow: 0 3px 10px rgba(255, 105, 180, 0.12);
+width: 100%;
 
-  &:hover {
-    background: linear-gradient(to right, #ffe4ec, #e6ccff);
-    box-shadow: 0 6px 20px rgba(123, 31, 162, 0.25);
-    transform: translateY(-3px);
-  }
+&:hover {
+  background: linear-gradient(to right, #ffe4ec, #ffd7e8);
+  transform: translateY(-2px); 
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+}
 
-  @media (max-width: 768px) {
-    padding: 1rem;
-  }
+@media (max-width: 768px) {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+}
 `;
 
 export const OptionTitle = styled.h2`
