@@ -22,11 +22,19 @@ export const ImageCard = styled.div`
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 `;
+export const SlideWrapper = styled.div<{ $activeIndex: number }>`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  transition: transform 1s ease-in-out;
+  transform: translateX(${({ $activeIndex }): string => `-${$activeIndex * 100}%`});
+`;
 
 export const BackgroundImage = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  flex-shrink: 0;
 `;
 
 export const OverlayText = styled.div`
@@ -90,6 +98,7 @@ export const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.5rem;
 `;
 
 export const CardText = styled.div`
@@ -103,7 +112,7 @@ export const CardHeading = styled.h3`
 `;
 
 export const CardDescription = styled.p`
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #6b6b6b;
 `;
 
@@ -132,6 +141,11 @@ export const BottomNav = styled.nav`
   justify-content: space-between;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   margin-top: 1.2rem;
+
+  div:hover > .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
 export const HomeIndicator = styled.div`

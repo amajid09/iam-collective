@@ -1,33 +1,31 @@
 import React from 'react';
-import {
-  HeaderContainer,
-  Headline,
-  Frame,
-  SubTitleContainer,
-  HeaderParagraph,
-} from './Header.style';
-import { Text } from '@mtnkente/paragon-display';
+import { HeaderContainer, Frame, ProfileImage } from './Header.style';
 
-const Header: React.FC = (): React.ReactElement => {
+interface HeaderProps {
+  title?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ title }): React.ReactElement => {
   return (
     <HeaderContainer>
       <Frame>
-        <Headline>
-          <Text $colour='full' $fontStyle='headline-small'>
-            Welcome to your PWA
-          </Text>
-        </Headline>
-        <SubTitleContainer>
-          <Text $colour='full' $fontStyle='body-large-semibold'>
-            MTN Kente - v1.0.0 - 12/02/2025
-          </Text>
-        </SubTitleContainer>
-        <HeaderParagraph>
-          A Progressive Web App (PWA) is a web app that uses modern web capabilities to deliver an
-          app-like experience to users. These apps meet certain requirements such as being
-          responsive or installable, are deployed to servers, accessible through URLs, and indexed
-          by search engines.
-        </HeaderParagraph>
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <h1 style={{ fontFamily: 'Work Sans', margin: 0, fontSize: 40 }}>{title}</h1>
+          <div
+            style={{ height: '2px', width: '190%', backgroundColor: '#ff69b4', marginTop: '8px' }}
+          ></div>
+        </div>
+        <ProfileImage
+          as='svg'
+          width='40'
+          height='40'
+          viewBox='0 0 24 24'
+          className='rounded-full bg-gray-200 text-gray-400'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <circle cx='12' cy='8' r='4' fill='currentColor' />
+          <path d='M4 20c0-4 4-6 8-6s8 2 8 6' fill='currentColor' />
+        </ProfileImage>{' '}
       </Frame>
     </HeaderContainer>
   );
