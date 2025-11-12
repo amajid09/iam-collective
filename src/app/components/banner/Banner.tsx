@@ -81,8 +81,8 @@ const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
       <OverlayText>
         <Quote>{images[activeIndex].title}</Quote>
         <Author>– The author</Author>
-        {children}
       </OverlayText>
+      {children}
     </ImageCard>
   );
 };

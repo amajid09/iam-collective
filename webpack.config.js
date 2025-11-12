@@ -91,7 +91,10 @@ const devConfig = () => {
       hot: true,
       open: true,
       port: 3000,
-      historyApiFallback: true,
+      historyApiFallback: {
+        disableDotRule: true, // allows paths with dots
+        rewrites: [{ from: /^\/.*$/, to: '/index.html' }],
+      },
     },
     output: {
       filename: '[name].js',

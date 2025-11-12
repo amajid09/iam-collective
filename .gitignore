@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ### Node template
 # Logs
 logs
@@ -146,3 +147,6 @@ prisma/client/
 tools/trivy
 toolls/
 .docker-empty
+=======
+node_modules
+>>>>>>> Stashed changes

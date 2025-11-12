@@ -1,11 +1,14 @@
 /* eslint-disable */
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Home, GraduationCap, Heart, Fan, Book } from 'lucide-react';
 import {
   ScreenContainer,
   ImageCard,
+  BackgroundImage,
   Card,
   OverlayText,
+  Author,
   ProfileImage,
   SuggestedWrapper,
   SuggestedTitle,
@@ -16,12 +19,10 @@ import {
   LotusEmoji,
   BottomNav,
   HomeIndicator,
-} from '../home/HomePage.styled';
-import { QuotedText } from './Learn.styled';
-import { useNavigate } from 'react-router-dom';
-import BottomNavigation from '../bottom-nav/BottomNav';
+  Quote,
+} from './Home.styles';
 
-const LearnScreen: React.FC = () => {
+const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (navigateTo: string): void => {
@@ -31,8 +32,13 @@ const LearnScreen: React.FC = () => {
   return (
     <ScreenContainer>
       <ImageCard>
+        <BackgroundImage
+          src='https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'
+          alt='Nature background'
+        />
         <OverlayText>
-          <QuotedText>This is a daily affirmation of support and positivity.</QuotedText>
+          <Quote>This is a daily affirmation of support and positivity.</Quote>
+          <Author>– The author</Author>
           <ProfileImage src='https://randomuser.me/api/portraits/women/44.jpg' alt='Profile' />
         </OverlayText>
       </ImageCard>
@@ -51,23 +57,22 @@ const LearnScreen: React.FC = () => {
         </Card>
       </SuggestedWrapper>
 
-      {/* <BottomNav>
-        <GraduationCap size={24} opacity={0.4} />
+      <BottomNav>
+        <GraduationCap
+          size={24}
+          opacity={0.4}
+          style={{ cursor: 'pointer' }}
+          onClick={() => handleNavigate('/quotes')}
+        />
         <Heart size={24} opacity={0.4} />
         <HomeIndicator>
-          <Home
-            size={28}
-            color='#d31875'
-            style={{ cursor: 'pointer' }}
-            onClick={() => handleNavigate('/')}
-          />
+          <Home size={28} color='#d31875' />
         </HomeIndicator>
         <Fan size={24} opacity={0.4} />
         <Book size={24} opacity={0.4} />
-      </BottomNav> */}
-      <BottomNavigation></BottomNavigation>
+      </BottomNav>
     </ScreenContainer>
   );
 };
 
-export default LearnScreen;
+export default HomeScreen;
