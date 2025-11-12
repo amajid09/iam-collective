@@ -1,4 +1,3 @@
-/*eslint-disable */
 import axios, { InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 
 const apiClient = axios.create({

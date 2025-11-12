@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mtnkente/paragon-foundation';
-import Welcome from './components/welcome/Welcome';
 import { useWebViewMessageListener, sendJsonToNative } from './hooks/UseWebViewMessageListener';
 import { CoreFonts } from '@mtnkente/paragon-core-fonts';
+import HomeScreen from './components/home/HomePage';
+import LearnScreen from './components/learn/Learn';
 
 type AppProps = {
   data?: unknown;
@@ -20,7 +22,12 @@ const App: React.FC<AppProps> = (config) => {
   return (
     <ThemeProvider mode={'light'} platform={'core'}>
       <CoreFonts />
-      <Welcome />
+      <Router>
+        <Routes>
+          <Route path='/' element={<HomeScreen />} />
+          <Route path='/quotes' element={<LearnScreen />} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 };
