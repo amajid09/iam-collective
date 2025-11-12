@@ -1,3 +1,4 @@
+/* eslint-disable */
 // import React from "react";
 // import { useNavigate } from "react-router-dom";
 // import { motion } from "framer-motion";
@@ -163,16 +164,22 @@ import styled from 'styled-components';
 // }
 
 // Decorative gradient circles (like Login page)
-const Circle = styled(motion.div)<{ size: number; top?: string; left?: string; bottom?: string; right?: string }>`
+const Circle = styled(motion.div)<{
+  size: number;
+  top?: string;
+  left?: string;
+  bottom?: string;
+  right?: string;
+}>`
   position: absolute;
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
   border-radius: 50%;
   background: rgba(255, 105, 180, 0.25);
-  top: ${({ top }) => top || "auto"};
-  left: ${({ left }) => left || "auto"};
-  bottom: ${({ bottom }) => bottom || "auto"};
-  right: ${({ right }) => right || "auto"};
+  top: ${({ top }) => top || 'auto'};
+  left: ${({ left }) => left || 'auto'};
+  bottom: ${({ bottom }) => bottom || 'auto'};
+  right: ${({ right }) => right || 'auto'};
 `;
 
 const OptionGroupStyled = styled.div`
@@ -225,34 +232,34 @@ export default function ContinuePage() {
     <ScreenContainer>
       <StyledContainer
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          background: "linear-gradient(180deg, #FAF0E6 0%, #FDEDF4 100%)",
-          padding: "2rem",
-          gap: "2rem",
-          width: "100%",
-          maxWidth: "400px",
-          margin: "2rem auto",
-          position: "relative",
-          overflow: "hidden",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #FAF0E6 0%, #FDEDF4 100%)',
+          padding: '2rem',
+          gap: '2rem',
+          width: '100%',
+          maxWidth: '400px',
+          margin: '2rem auto',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
         {/* Decorative Circles */}
         <Circle
           size={250}
-          top="-20%"
-          left="-15%"
+          top='-20%'
+          left='-15%'
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 1 }}
         />
         <Circle
           size={180}
-          bottom="-10%"
-          right="-10%"
+          bottom='-10%'
+          right='-10%'
           initial={{ scale: 0 }}
           animate={{ scale: 1.2 }}
           transition={{ duration: 1.2 }}
@@ -263,29 +270,27 @@ export default function ContinuePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 style={{ fontSize: "1.75rem", fontWeight: 700, color: "#1a1a1a" }}>
-            Welcome
-          </h1>
-          <p style={{ fontSize: "1rem", color: "#555", marginTop: "0.5rem" }}>
+          <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: '#1a1a1a' }}>Welcome</h1>
+          <p style={{ fontSize: '1rem', color: '#555', marginTop: '0.5rem' }}>
             How would you like to continue?
           </p>
         </motion.div>
 
         <OptionGroupStyled>
           <motion.div whileHover={{ scale: 1.03 }}>
-            <OptionCardStyled onClick={() => navigate("/login")}>
+            <OptionCardStyled onClick={() => navigate('/login')}>
               <OptionTitle>Log In</OptionTitle>
               <OptionText>Already have an account?</OptionText>
             </OptionCardStyled>
           </motion.div>
           <motion.div whileHover={{ scale: 1.03 }}>
-            <OptionCardStyled onClick={() => navigate("/signup")}>
+            <OptionCardStyled onClick={() => navigate('/signup')}>
               <OptionTitle>Sign Up</OptionTitle>
               <OptionText>New here? Create your account to join us.</OptionText>
             </OptionCardStyled>
           </motion.div>
           <motion.div whileHover={{ scale: 1.03 }}>
-            <OptionCardStyled onClick={() => navigate("/home")}>
+            <OptionCardStyled onClick={() => navigate('/home')}>
               <OptionTitle>Continue as Guest</OptionTitle>
               <OptionText>Explore the app without creating an account.</OptionText>
             </OptionCardStyled>

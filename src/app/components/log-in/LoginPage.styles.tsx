@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -56,7 +56,7 @@ export const RightPanel = styled.div`
 export const FormTitle = styled.h1`
   font-size: 2rem;
   font-weight: 700;
-  color: #6a0dad; 
+  color: #6a0dad;
   margin-bottom: 1.5rem;
 `;
 
@@ -69,7 +69,7 @@ export const Form = styled.form`
 export const Label = styled.label`
   font-size: 0.95rem;
   font-weight: 500;
-  color: #7b1fa2; 
+  color: #7b1fa2;
   margin-bottom: 0.25rem;
 `;
 

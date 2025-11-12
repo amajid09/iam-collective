@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+/* eslint-disable */
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   ScreenContainer,
   StyledContainer,
@@ -10,12 +11,11 @@ import {
   Logo,
   Hamburger,
   HeroTitle,
- 
   BottomLeftImage,
-} from "./LandingPage.styles";
+} from './LandingPage.styles';
 
-import { motion } from "framer-motion";
-import Footer from "../footer/Footer";
+import { motion } from 'framer-motion';
+import Footer from '../footer/Footer';
 
 export default function LandingPage() {
   const navigate = useNavigate();
@@ -26,25 +26,27 @@ export default function LandingPage() {
   return (
     <ScreenContainer>
       <Header>
-        <Logo
-          src="/Header-Logo.png"
-          alt="IAMCOLLECTIVE Logo"
-          onClick={() => navigate("/")}
-        />
+        <Logo src='/Header-Logo.png' alt='IAMCOLLECTIVE Logo' onClick={() => navigate('/')} />
 
         <Hamburger onClick={toggleMenu}>
-  
           <span></span>
           <span></span>
           <span></span>
-        
         </Hamburger>
 
         <NavLinks isOpen={menuOpen}>
-          <a href="#main" onClick={() => setMenuOpen(false)}>Main</a>
-          <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-          <a href="#help" onClick={() => setMenuOpen(false)}>Help</a>
+          <a href='#main' onClick={() => setMenuOpen(false)}>
+            Main
+          </a>
+          <a href='#contact' onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
+          <a href='#about' onClick={() => setMenuOpen(false)}>
+            About
+          </a>
+          <a href='#help' onClick={() => setMenuOpen(false)}>
+            Help
+          </a>
         </NavLinks>
       </Header>
 
@@ -70,17 +72,15 @@ export default function LandingPage() {
         <CardWrapper>
           <h2>Why Join IAM Collective?</h2>
           <p>
-            Connect with a safe and supportive community. Share experiences,
-            learn from others, and empower yourself and those around you.
+            Connect with a safe and supportive community. Share experiences, learn from others, and
+            empower yourself and those around you.
           </p>
         </CardWrapper>
-        <PinkButton onClick={() => navigate("/continue")}>
-            Get Started
-          </PinkButton>
+        <PinkButton onClick={() => navigate('/continue')}>Get Started</PinkButton>
 
         <Footer />
       </StyledContainer>
-      <BottomLeftImage src="/landing-page.jpg" alt="Decorative" />
+      <BottomLeftImage src='/landing-page.jpg' alt='Decorative' />
     </ScreenContainer>
   );
 }

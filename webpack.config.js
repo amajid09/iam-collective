@@ -93,9 +93,7 @@ const devConfig = () => {
       port: 3000,
       historyApiFallback: {
         disableDotRule: true, // allows paths with dots
-        rewrites: [
-          { from: /^\/.*$/, to: '/index.html' },
-        ],
+        rewrites: [{ from: /^\/.*$/, to: '/index.html' }],
       },
     },
     output: {

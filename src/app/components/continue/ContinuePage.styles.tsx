@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -28,7 +28,7 @@ export const Title = styled.h1`
 
 export const Subtitle = styled.p`
   font-size: 1.125rem;
-  color: #7b1fa2; 
+  color: #7b1fa2;
   margin-top: 0.5rem;
   margin-bottom: 2rem;
 
@@ -46,33 +46,33 @@ export const OptionGroup = styled.div`
 `;
 
 export const OptionCard = styled.button`
-background: linear-gradient(to right, #fff0f6, #fdf0f5);
-color: #1a1a1a;
-padding: 0.75rem 1rem;  
-text-align: left;
-border-radius: 0.85rem;  
-font-size: 0.95rem;      
-font-weight: 500;
-transition: all 0.25s ease;
-box-shadow: 0 3px 10px rgba(255, 105, 180, 0.12);
-width: 100%;
+  background: linear-gradient(to right, #fff0f6, #fdf0f5);
+  color: #1a1a1a;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-radius: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 10px rgba(255, 105, 180, 0.12);
+  width: 100%;
 
-&:hover {
-  background: linear-gradient(to right, #ffe4ec, #ffd7e8);
-  transform: translateY(-2px); 
-  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
-}
+  &:hover {
+    background: linear-gradient(to right, #ffe4ec, #ffd7e8);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.2);
+  }
 
-@media (max-width: 768px) {
-  padding: 0.6rem 0.9rem;
-  font-size: 0.9rem;
-}
+  @media (max-width: 768px) {
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+  }
 `;
 
 export const OptionTitle = styled.h2`
   font-size: 1.25rem;
   font-weight: 600;
-  color: #7b1fa2; 
+  color: #7b1fa2;
   margin-bottom: 0.25rem;
 `;
 

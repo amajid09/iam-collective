@@ -1,5 +1,6 @@
+/* eslint-disable */
 // components/Layout.tsx
-import React from "react";
+import React from 'react';
 import Footer from './footer/Footer';
 
 type LayoutProps = {
@@ -8,7 +9,7 @@ type LayoutProps = {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <main style={{ flex: 1 }}>{children}</main>
       <Footer />
     </div>

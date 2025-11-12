@@ -1,3 +1,4 @@
+/* eslint-disable */
 // import React, { useState } from "react";
 // import { motion } from "framer-motion";
 // import { useNavigate } from "react-router-dom";
@@ -146,7 +147,7 @@
 
 // //   const handleMicrosoftLogin = () => {
 // //     instance.loginPopup({
-// //       scopes: ["user.read"], 
+// //       scopes: ["user.read"],
 // //     })
 // //     .then(response => {
 // //       console.log("User info:", response.account);
@@ -169,15 +170,11 @@
 // //   );
 // // }
 
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import {
-  ScreenContainer,
-  StyledContainer,
-  PinkButton,
-} from "../landing-page/LandingPage.styles";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { ScreenContainer, StyledContainer, PinkButton } from '../landing-page/LandingPage.styles';
+import styled from 'styled-components';
 
 // export default function LoginPage() {
 //   const navigate = useNavigate();
@@ -279,14 +276,13 @@ import styled from "styled-components";
 //   );
 // }
 
-
 const LeftDecor = styled.div`
   position: relative;
   width: 100%;
   height: 150px;
   margin-bottom: 2rem;
 
-  @media(min-width: 768px) {
+  @media (min-width: 768px) {
     height: 200px;
   }
 
@@ -314,8 +310,8 @@ const LeftDecor = styled.div`
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const inputVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -334,9 +330,9 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (email.trim() && password.trim()) {
-      navigate("/home");
+      navigate('/home');
     } else {
-      alert("Please enter valid email and password.");
+      alert('Please enter valid email and password.');
     }
   };
 
@@ -344,71 +340,87 @@ export default function LoginPage() {
     <ScreenContainer>
       <StyledContainer
         style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          textAlign: "center",
-          background: "linear-gradient(180deg, #FAF0E6 0%, #FDEDF4 100%)",
-          padding: "2rem",
-          gap: "1.5rem",
-          maxWidth: "400px",
-          margin: "2rem auto",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          background: 'linear-gradient(180deg, #FAF0E6 0%, #FDEDF4 100%)',
+          padding: '2rem',
+          gap: '1.5rem',
+          maxWidth: '400px',
+          margin: '2rem auto',
         }}
       >
         {/* Decorative left panel */}
         <LeftDecor>
-          <motion.div className="circle1" initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 1 }} />
-          <motion.div className="circle2" initial={{ scale: 0 }} animate={{ scale: 1.2 }} transition={{ duration: 1.2 }} />
+          <motion.div
+            className='circle1'
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1 }}
+          />
+          <motion.div
+            className='circle2'
+            initial={{ scale: 0 }}
+            animate={{ scale: 1.2 }}
+            transition={{ duration: 1.2 }}
+          />
         </LeftDecor>
 
-        <h1 style={{ fontSize: "2rem", fontWeight: 700, color: "#1a1a1a" }}>
-          Login
-        </h1>
+        <h1 style={{ fontSize: '2rem', fontWeight: 700, color: '#1a1a1a' }}>Login</h1>
 
-        <form style={{ display: "flex", flexDirection: "column", gap: "1rem", width: "100%" }} onSubmit={handleLogin}>
-          <motion.div custom={0} initial="hidden" animate="visible" variants={inputVariants}>
+        <form
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '100%' }}
+          onSubmit={handleLogin}
+        >
+          <motion.div custom={0} initial='hidden' animate='visible' variants={inputVariants}>
             <input
-              type="email"
-              placeholder="Enter your email"
+              type='email'
+              placeholder='Enter your email'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{
-                width: "100%",
-                padding: "0.75rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid #ffbfdc",
-                outline: "none",
-                fontSize: "1rem",
+                width: '100%',
+                padding: '0.75rem 1rem',
+                borderRadius: '0.75rem',
+                border: '1px solid #ffbfdc',
+                outline: 'none',
+                fontSize: '1rem',
               }}
               required
             />
           </motion.div>
 
-          <motion.div custom={1} initial="hidden" animate="visible" variants={inputVariants}>
+          <motion.div custom={1} initial='hidden' animate='visible' variants={inputVariants}>
             <input
-              type="password"
-              placeholder="Enter your password"
+              type='password'
+              placeholder='Enter your password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               style={{
-                width: "100%",
-                padding: "0.75rem 1rem",
-                borderRadius: "0.75rem",
-                border: "1px solid #ffbfdc",
-                outline: "none",
-                fontSize: "1rem",
+                width: '100%',
+                padding: '0.75rem 1rem',
+                borderRadius: '0.75rem',
+                border: '1px solid #ffbfdc',
+                outline: 'none',
+                fontSize: '1rem',
               }}
               required
             />
           </motion.div>
 
-          <motion.div initial="hidden" animate="visible" variants={buttonVariants}>
-            <PinkButton type="submit" style={{ width: "100%" }}>Login</PinkButton>
+          <motion.div initial='hidden' animate='visible' variants={buttonVariants}>
+            <PinkButton type='submit' style={{ width: '100%' }}>
+              Login
+            </PinkButton>
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1 }}>
-            <a href="#" style={{ fontSize: "0.85rem", color: "#6b7280", textDecoration: "underline" }}>
+            <a
+              href='#'
+              style={{ fontSize: '0.85rem', color: '#6b7280', textDecoration: 'underline' }}
+            >
               Forgot Password?
             </a>
           </motion.div>

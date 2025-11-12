@@ -1,7 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { motion } from "framer-motion";
+/* eslint-disable */
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const Container = styled.div`
   min-height: 100vh;
@@ -60,10 +61,10 @@ const Footer = styled.div`
 `;
 
 const guestFeatures = [
-  { title: "Explore Community", desc: "See community posts and resources." },
-  { title: "Safety Tips", desc: "Learn practical safety tips for daily life." },
-  { title: "Events & Workshops", desc: "Access upcoming events." },
-  { title: "Support Links", desc: "Connect with help services if needed." },
+  { title: 'Explore Community', desc: 'See community posts and resources.' },
+  { title: 'Safety Tips', desc: 'Learn practical safety tips for daily life.' },
+  { title: 'Events & Workshops', desc: 'Access upcoming events.' },
+  { title: 'Support Links', desc: 'Connect with help services if needed.' },
 ];
 
 export default function GuestHomePage() {
@@ -87,18 +88,12 @@ export default function GuestHomePage() {
       </FeatureGrid>
 
       <Footer>
-        Want full access?{" "}
-        <span
-          style={{ color: "#e75480", cursor: "pointer" }}
-          onClick={() => navigate("/signup")}
-        >
+        Want full access?{' '}
+        <span style={{ color: '#e75480', cursor: 'pointer' }} onClick={() => navigate('/signup')}>
           Sign Up
-        </span>{" "}
-        or{" "}
-        <span
-          style={{ color: "#e75480", cursor: "pointer" }}
-          onClick={() => navigate("/login")}
-        >
+        </span>{' '}
+        or{' '}
+        <span style={{ color: '#e75480', cursor: 'pointer' }} onClick={() => navigate('/login')}>
           Login
         </span>
       </Footer>

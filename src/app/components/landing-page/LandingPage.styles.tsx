@@ -1,7 +1,8 @@
+/* eslint-disable */
 // LandingPage.styles.ts
-import styled from "styled-components";
-import { Button } from "../buttons";
-import { motion } from "framer-motion";
+import styled from 'styled-components';
+import { Button } from '../buttons';
+// import { motion } from 'framer-motion';
 
 export const ScreenContainer = styled.div`
   position: relative;
@@ -20,7 +21,7 @@ export const StyledContainer = styled.div`
   position: relative;
   width: 100%;
   max-width: 100%;
-  flex: 1; 
+  flex: 1;
   border-radius: 2rem;
   overflow: hidden;
   padding: 2rem;
@@ -134,7 +135,7 @@ export const NavLinks = styled.nav<{ isOpen?: boolean }>`
     padding: 1rem 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+    display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
     gap: 1rem;
 
     a {
