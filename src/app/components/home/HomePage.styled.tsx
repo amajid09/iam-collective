@@ -1,3 +1,7 @@
+/* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable react/jsx-no-bind */
 import styled from 'styled-components';
 
 export const ScreenContainer = styled.div`

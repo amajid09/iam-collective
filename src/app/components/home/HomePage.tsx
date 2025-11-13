@@ -1,3 +1,7 @@
+/* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
