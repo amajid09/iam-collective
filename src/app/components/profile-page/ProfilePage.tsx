@@ -24,12 +24,12 @@ const ProfilePage: React.FC = () => {
     careResponsibility: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) : void => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     const { name, value } = e.target;
     setProfile((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) : void => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
     console.log('Saved profile:', profile);
     //  send this data to the backend via API

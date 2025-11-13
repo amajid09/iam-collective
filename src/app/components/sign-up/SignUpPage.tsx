@@ -34,7 +34,7 @@ export default function SignUpPage() {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (field: keyof StepData, value: string) : void => {
+  const handleChange = (field: keyof StepData, value: string): void => {
     setFormData({ ...formData, [field]: value });
   };
 
