@@ -14,8 +14,8 @@ import {
   FooterLogo,
   MainContent,
   LogoDivider,
+  PinkButton,
 } from './LandingPage.styles';
-import { PinkButton } from '../story/Stories.style';
 
 export default function LandingPage() {
   const navigate = useNavigate();
