@@ -13,7 +13,7 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-   background: #fef9fb;
+  background: #fef9fb;
 `;
 
 export const Title = styled.h2`
@@ -27,9 +27,7 @@ export const Info = styled.span`
 `;
 
 export const Form = styled.form`
-
   flex-direction: column;
-
 `;
 
 export const Label = styled.label`
@@ -131,7 +129,7 @@ export const DeleteButton = styled.button`
 `;
 
 export const SignUpButton = styled.button`
- background: transparent;
+  background: transparent;
   color: #b91465;
   border: none;
   cursor: pointer;

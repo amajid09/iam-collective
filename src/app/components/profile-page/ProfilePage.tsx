@@ -147,8 +147,8 @@ const ProfilePage: React.FC = () => {
   };
 
   const handleSignUP = () => {
-     navigate('/signup')
-  }
+    navigate('/signup');
+  };
 
   if (!user) {
     return (
@@ -157,13 +157,15 @@ const ProfilePage: React.FC = () => {
           <ArrowLeft size={20} onClick={() => navigate(-1)} style={{ cursor: 'pointer' }} />
           <Title>Edit Profile</Title>
         </Header>
-        <Avatar  as='svg'
-                  width='40'
-                  height='40'
-                  viewBox='0 0 24 24'
-                  className='rounded-full bg-gray-200 text-gray-400'
-                  xmlns='http://www.w3.org/2000/svg'
-                  style={{ cursor: 'pointer' }}>
+        <Avatar
+          as='svg'
+          width='40'
+          height='40'
+          viewBox='0 0 24 24'
+          className='rounded-full bg-gray-200 text-gray-400'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ cursor: 'pointer' }}
+        >
           <circle cx='12' cy='8' r='4' fill='currentColor' />
           <path d='M4 20c0-4 4-6 8-6s8 2 8 6' fill='currentColor' />
         </Avatar>
@@ -181,17 +183,18 @@ const ProfilePage: React.FC = () => {
           <Title>Edit Profile</Title>
         </Header>
 
-        <Avatar  as='svg'
-                  width='40'
-                  height='40'
-                  viewBox='0 0 24 24'
-                  className='rounded-full bg-gray-200 text-gray-400'
-                  xmlns='http://www.w3.org/2000/svg'
-                  style={{ cursor: 'pointer' }}>
+        <Avatar
+          as='svg'
+          width='40'
+          height='40'
+          viewBox='0 0 24 24'
+          className='rounded-full bg-gray-200 text-gray-400'
+          xmlns='http://www.w3.org/2000/svg'
+          style={{ cursor: 'pointer' }}
+        >
           <circle cx='12' cy='8' r='4' fill='currentColor' />
           <path d='M4 20c0-4 4-6 8-6s8 2 8 6' fill='currentColor' />
         </Avatar>
-
 
         <Form onSubmit={handleSubmit}>
           <Title>
