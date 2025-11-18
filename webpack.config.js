@@ -125,13 +125,6 @@ const devConfig = {
     open: true,
     port: 3000,
     historyApiFallback: true,
-    proxy: [
-      {
-        context: ['/cm'],
-        target: 'https://kenteai-test.mtn.com',
-        changeOrigin: true,
-      },
-    ],
   },
   output: {
     filename: '[name].js',
@@ -169,7 +162,7 @@ const createProdConfig = (env) => ({
     new HtmlWebpackPlugin({
         template: path.resolve(__dirname, './public/index.html'),
         templateParameters: {
-          PUBLIC_URL: '/mtn-group-hive', // ✅ for favicon, manifest, etc.
+          PUBLIC_URL: '/', // ✅ for favicon, manifest, etc.
         },
       }),
       new CopyWebpackPlugin({
