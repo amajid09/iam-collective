@@ -15,6 +15,7 @@ import {
   PinkButton,
 } from './SignUp.styles';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { setUser } from '../../utils/storage';
 
 type Country = { name: string; flag: string };
@@ -35,6 +36,7 @@ export default function SignUpPage() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (field: keyof StepData, value: string): void => {
     setFormData({ ...formData, [field]: value });
@@ -181,6 +183,32 @@ export default function SignUpPage() {
                 type='button'
                 onClick={() => {
                   console.log('Collected Sign Up Data:', formData);
+
+                  if (!formData.email || !formData.password) {
+                    alert('Email and password are required');
+                    return;
+                  }
+
+                  // 1 temprarily Save user locally
+                  const savedUsers = JSON.parse(localStorage.getItem('users') || '[]');
+                  const existingUser = savedUsers.find((u: any) => u.email === formData.email);
+                  if (!existingUser) {
+                    savedUsers.push({
+                      email: formData.email,
+                      password: formData.password,
+                      fullName: formData.fullName,
+                    });
+                    localStorage.setItem('users', JSON.stringify(savedUsers));
+                  }
+
+                  // 2️ Store current logged-in user
+                  localStorage.setItem(
+                    'currentUser',
+                    JSON.stringify({ email: formData.email, fullName: formData.fullName })
+                  );
+
+                  // 3 now Log user in via AuthContext
+                  login({ email: formData.email, fullName: formData.fullName });
 
                   setUser({
                     name: formData.fullName || '',

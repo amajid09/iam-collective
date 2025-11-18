@@ -19,46 +19,47 @@ import {
 } from './HomePage.styled';
 import BottomNavigation from '../bottom-nav/BottomNav';
 import Banner from '../banner/Banner';
+import { useAuth } from '../../context/AuthContext';
 
 const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth(); // get signed-up user data
 
-  // const handleNavigate = (navigateTo: string): void => {
-  //   navigate(navigateTo);
-  // };
+  // Only include relevant cards for signed-up users
   const cardsData = [
     {
       headline: 'I AM Taking Action Against Gender-Based Violence',
       subline:
         'A healing movement for anyone impacted by gender-based violence (GBV) — turning real stories into real change.',
-      cta: 'Join the Collective fight back through your self-healing',
-      link: '/signup',
+      cta: 'Continue your journey',
+      link: '/learn',
     },
     {
       headline: 'What is The I AM Collective?',
       subline:
         'The I AM Collective is a healing movement and digital community for anyone impacted by gender-based violence — directly or indirectly. We turn real stories into learning journeys and community insights that help people recognise abuse, heal, and take action.',
-      cta: "Share your story & unlock healing & someone else's",
+      cta: 'Share your story & unlock healing',
       link: '/stories',
     },
     {
       headline: 'Join the Movement Teaser',
       subline:
         'Your contribution is not money — it is your commitment to learn, heal, and refuse to normalise abuse. When you join The I AM Collective, you become part of a community that is learning how to be a safe space, one person at a time.',
-      cta: 'Join the collective',
-      link: '/signup',
+      cta: 'Explore collective resources',
+      link: '/learn',
     },
     {
       headline: 'Who We Are',
       subline:
         'We’re a healing movement and digital community created to support anyone affected by gender-based violence (GBV). Our collective stories and learning is how we help each other recognise abuse, heal from it, and change how we show up in our homes, workplaces and online spaces.',
-      cta: null, // some cards don't need CTA, maybe this could lead to 'about'
+      cta: null, // no CTA needed
     },
     {
       headline: 'When one person heals, we all move.',
       subline:
         'When we change the conversation, we change behaviour. When we speak up, connect and heal, we create safer communities.',
-      cta: 'Be the change. Become a member today',
+      cta: 'Be the change. Continue your journey',
+      link: '/learn',
     },
     {
       headline: 'It’s about collective action',
@@ -88,23 +89,15 @@ const HomeScreen: React.FC = () => {
       </Banner>
 
       <SuggestedWrapper>
-        <SuggestedTitle>Suggested for you</SuggestedTitle>
+        <SuggestedTitle>Welcome back, {user?.fullName || 'Friend'}!</SuggestedTitle>
         <SuggestedCardsContainer>
           {cardsData.map((card, index) => (
             <Card key={index}>
               <CardText>
                 <CardHeading>{card.headline}</CardHeading>
                 {card.subline && <CardDescription>{card.subline}</CardDescription>}
-                {card.cta && (
-                  <CardLink
-                    onClick={() => {
-                      if (card.link) {
-                        navigate(card.link);
-                      }
-                    }}
-                  >
-                    {card.cta}
-                  </CardLink>
+                {card.cta && card.link && (
+                  <CardLink onClick={() => navigate(card.link)}>{card.cta}</CardLink>
                 )}
               </CardText>
               <LotusEmoji>🌸</LotusEmoji>
@@ -112,6 +105,7 @@ const HomeScreen: React.FC = () => {
           ))}
         </SuggestedCardsContainer>
       </SuggestedWrapper>
+
       <BottomNavigation />
     </ScreenContainer>
   );

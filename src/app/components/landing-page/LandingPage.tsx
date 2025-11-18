@@ -33,7 +33,7 @@ export default function LandingPage() {
           <Line />
         </DividerWrapper>
 
-        <PinkButton onClick={() => navigate('/home')}>Next</PinkButton>
+        <PinkButton onClick={() => navigate('/continue')}>Next</PinkButton>
       </MainContent>
 
       <Footer>
@@ -41,9 +41,9 @@ export default function LandingPage() {
         <FooterLogos>
           <FooterLogo src='/MTN-Logo.png' alt='MTN-Logo' />
           <LogoDivider />
-          <FooterLogo src='/unlogo.png' alt='unlogo' />
-          <LogoDivider />
-          <FooterLogo src='/unite.png' alt='unite' />
+          <FooterLogo src='/chenosis.png' alt='chenosis' />
+          {/* <LogoDivider />
+          <FooterLogo src='/unite.png' alt='unite' /> */}
         </FooterLogos>
       </Footer>
     </ScreenContainer>

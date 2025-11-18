@@ -13,6 +13,7 @@ import {
 interface Image {
   src: string;
   title: string;
+  author: string;
 }
 const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
   const titles = [
@@ -22,9 +23,11 @@ const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
     'Your story might be the key that unlocks someone else’s freedom.',
     'When we learn better, we do better — and we hurt each other less.',
   ];
+  const authors = ['Maya Angelou', 'Unknown', 'Unknown', 'Unknown', 'Unknown'];
+
   const sources = Object.values(backgrounds) as string[];
 
-  const images: Image[] = sources.map((src, i) => ({ src, title: titles[i] }));
+  const images: Image[] = sources.map((src, i) => ({ src, title: titles[i], author: authors[i] }));
 
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
@@ -80,7 +83,7 @@ const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
       </SlideWrapper>
       <OverlayText>
         <Quote>{images[activeIndex].title}</Quote>
-        <Author>– The author</Author>
+        <Author>– {images[activeIndex].author}</Author>
       </OverlayText>
       {children}
     </ImageCard>

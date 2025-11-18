@@ -14,6 +14,8 @@ import {
 import Header from '../header/Header';
 import { useScrollHandler } from '../../hooks/use-scroll-handler';
 import BottomNavigation from '../bottom-nav/BottomNav';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router';
 
 interface StoryProps {
   title: string;
@@ -25,11 +27,14 @@ interface StoryProps {
 const Stories: React.FC = () => {
   const [posts, setPosts] = useState<StoryProps[]>([]);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState<string | undefined>();
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
+  const { isGuest, isAuthenticated } = useAuth();
+  const [showGuestModal, setShowGuestModal] = useState(false);
 
   useEffect(() => {
     const savedPosts = localStorage.getItem('stories');
@@ -109,6 +114,7 @@ const Stories: React.FC = () => {
                     fontWeight: '600',
                     color: 'purple',
                     marginBottom: '0.5rem',
+                    font: 'Lora',
                   }}
                 >
                   Share your story
@@ -125,7 +131,49 @@ const Stories: React.FC = () => {
                   Your words can inspire someone. Tell us about a moment, a feeling, or something
                   you learned.
                 </p>
-                <PinkButton onClick={() => setShowModal(true)}>Add a Story</PinkButton>
+                <PinkButton
+                  onClick={() => {
+                    if (isGuest && !isAuthenticated) {
+                      setShowGuestModal(true); // show guest sign-up prompt
+                    } else {
+                      setShowModal(true); // normal create story modal
+                    }
+                  }}
+                >
+                  Add a Story
+                </PinkButton>
+                {showGuestModal && (
+                  <>
+                    <div
+                      style={{
+                        position: 'fixed',
+                        inset: 0,
+                        backdropFilter: 'blur(6px)',
+                        backgroundColor: 'rgba(0,0,0,0.35)',
+                        zIndex: 10,
+                      }}
+                      onClick={() => setShowGuestModal(false)}
+                    />
+                    <StyledPopUpCard>
+                      <h3 style={{ fontFamily: 'Work Sans' }}>Sign Up to Share Stories</h3>
+                      <p>Your words can inspire others. Create an account to unlock full access.</p>
+                      <PinkButton
+                        onClick={() => {
+                          setShowGuestModal(false);
+                          navigate('/signup');
+                        }}
+                      >
+                        Sign Up
+                      </PinkButton>
+                      <PinkButton
+                        onClick={() => setShowGuestModal(false)}
+                        style={{ backgroundColor: '#ffd7e8', marginLeft: '1rem' }}
+                      >
+                        Cancel
+                      </PinkButton>
+                    </StyledPopUpCard>
+                  </>
+                )}
               </StyledContainer>
             </div>
           ) : (

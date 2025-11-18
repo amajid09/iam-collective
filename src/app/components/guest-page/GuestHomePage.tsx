@@ -1,102 +1,89 @@
 /* eslint-disable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+/* eslint-disable react/jsx-no-bind */
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import {
+  ScreenContainer,
+  Card,
+  ProfileImage,
+  SuggestedWrapper,
+  SuggestedTitle,
+  CardText,
+  CardHeading,
+  CardDescription,
+  CardLink,
+  LotusEmoji,
+  SuggestedCardsContainer,
+} from '../home/HomePage.styled';
+import BottomNavigation from '../bottom-nav/BottomNav';
+import Banner from '../banner/Banner';
 
-const Container = styled.div`
-  min-height: 100vh;
-  padding: 2rem;
-  background: linear-gradient(to bottom right, #ffe4ec, #ffd6e8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const Header = styled.h1`
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #d6336c;
-  margin-bottom: 2rem;
-`;
-
-const FeatureGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 900px;
-`;
-
-const FeatureCard = styled(motion.div)`
-  background-color: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 4px 14px rgba(231, 84, 128, 0.2);
-  text-align: center;
-  cursor: pointer;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 20px rgba(231, 84, 128, 0.3);
-  }
-`;
-
-const FeatureTitle = styled.h2`
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #e75480;
-  margin-bottom: 0.5rem;
-`;
-
-const FeatureDesc = styled.p`
-  font-size: 0.95rem;
-  color: #c2185b;
-`;
-
-const Footer = styled.div`
-  margin-top: 3rem;
-  font-size: 0.9rem;
-  color: #d6336c;
-`;
-
-const guestFeatures = [
-  { title: 'Explore Community', desc: 'See community posts and resources.' },
-  { title: 'Safety Tips', desc: 'Learn practical safety tips for daily life.' },
-  { title: 'Events & Workshops', desc: 'Access upcoming events.' },
-  { title: 'Support Links', desc: 'Connect with help services if needed.' },
-];
-
-export default function GuestHomePage() {
+const GuestHomeScreen: React.FC = () => {
   const navigate = useNavigate();
 
-  return (
-    <Container>
-      <Header>Welcome, Guest!</Header>
-      <FeatureGrid>
-        {guestFeatures.map((feature, i) => (
-          <FeatureCard
-            key={i}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.2, duration: 0.5 }}
-          >
-            <FeatureTitle>{feature.title}</FeatureTitle>
-            <FeatureDesc>{feature.desc}</FeatureDesc>
-          </FeatureCard>
-        ))}
-      </FeatureGrid>
+  const cardsData = [
+    {
+      headline: 'I AM Taking Action Against Gender-Based Violence',
+      subline:
+        'A healing movement for anyone impacted by gender-based violence (GBV) — turning real stories into real change.',
+      cta: 'Join the Collective (Sign Up)',
+      link: '/signup',
+      restricted: true, // mark this card as restricted for guests
+    },
+    {
+      headline: 'What is The I AM Collective?',
+      subline: 'The I AM Collective is a healing movement and digital community...',
+      cta: 'Learn More',
+      link: '/stories',
+      restricted: false,
+    },
+  ];
 
-      <Footer>
-        Want full access?{' '}
-        <span style={{ color: '#e75480', cursor: 'pointer' }} onClick={() => navigate('/signup')}>
-          Sign Up
-        </span>{' '}
-        or{' '}
-        <span style={{ color: '#e75480', cursor: 'pointer' }} onClick={() => navigate('/login')}>
-          Login
-        </span>
-      </Footer>
-    </Container>
+  return (
+    <ScreenContainer>
+      <Banner>
+        <ProfileImage
+          as='svg'
+          width='40'
+          height='40'
+          viewBox='0 0 24 24'
+          className='rounded-full bg-gray-200 text-gray-400'
+          onClick={() => alert('Guests do not have profiles yet')}
+          style={{ cursor: 'pointer' }}
+        >
+          <circle cx='12' cy='8' r='4' fill='currentColor' />
+          <path d='M4 20c0-4 4-6 8-6s8 2 8 6' fill='currentColor' />
+        </ProfileImage>
+      </Banner>
+
+      <SuggestedWrapper>
+        <SuggestedTitle>Suggested for you (Guest)</SuggestedTitle>
+        <SuggestedCardsContainer>
+          {cardsData.map((card, index) => (
+            <Card key={index}>
+              <CardText>
+                <CardHeading>{card.headline}</CardHeading>
+                {card.subline && <CardDescription>{card.subline}</CardDescription>}
+                {card.cta && !card.restricted && (
+                  <CardLink onClick={() => card.link && navigate(card.link)}>{card.cta}</CardLink>
+                )}
+                {card.restricted && (
+                  <CardLink onClick={() => navigate('/signup')} style={{ opacity: 0.6 }}>
+                    {card.cta} (Sign up to access)
+                  </CardLink>
+                )}
+              </CardText>
+              <LotusEmoji>🌸</LotusEmoji>
+            </Card>
+          ))}
+        </SuggestedCardsContainer>
+      </SuggestedWrapper>
+
+      <BottomNavigation />
+    </ScreenContainer>
   );
-}
+};
+
+export default GuestHomeScreen;

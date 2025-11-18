@@ -5,8 +5,15 @@ import { Button } from '../buttons';
 export const ScreenContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  width: 100%;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 1rem;
+  // background: linear-gradient(180deg, #fbd2e1, #d8f3d1);
+  // border-radius: 2rem;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 `;
 
 export const PinkButton = styled.button`
@@ -19,7 +26,7 @@ export const PinkButton = styled.button`
   border-radius: 60px;
   cursor: pointer;
   transition: all 0.25s ease;
-  font-family: 'Work Sans', sans-serif;
+  font-family: 'Lora', serif;
 
   &:hover {
     background-color: #ffbfdc;
@@ -74,6 +81,7 @@ export const DividerText = styled.span`
   font-weight: 500;
   color: black;
   text-align: center;
+  font-family: 'Lora';
 `;
 
 export const NextButton = styled(Button)`

@@ -225,3 +225,4 @@
     "trivy:scan": "node .github/scripts/trivy-scan.js"
   }
 }
+
