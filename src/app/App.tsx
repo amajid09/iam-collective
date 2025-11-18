@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mtnkente/paragon-foundation';
 import { useWebViewMessageListener, sendJsonToNative } from './hooks/UseWebViewMessageListener';
-import { CoreFonts } from '@mtnkente/paragon-core-fonts';
 import HomeScreen from './components/home/HomePage';
 import LearnScreen from './components/learn/Learn';
 import Stories from './components/story/Stories';
@@ -31,8 +29,6 @@ const App: React.FC<AppProps> = (config) => {
   }, [config.data]);
 
   return (
-    <ThemeProvider mode={'light'} platform={'core'}>
-      <CoreFonts />
       <Router>
         <Routes>
           <Route path='/' element={<LandingPage />} />
@@ -51,7 +47,6 @@ const App: React.FC<AppProps> = (config) => {
           <Route path='/stories' element={<Stories />} />
         </Routes>
       </Router>
-    </ThemeProvider>
   );
 };
 
