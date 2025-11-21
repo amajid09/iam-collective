@@ -1,7 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from '@mtnkente/paragon-foundation';
-import { CoreFonts } from '@mtnkente/paragon-core-fonts';
 import { AuthProvider } from './context/AuthContext'; // ✅ ADD THIS
 
 import HomeScreen from './components/home/HomePage';
@@ -15,12 +13,10 @@ import AboutPage from './components/about-page/AboutPage';
 import ProfilePage from './components/profile-page/ProfilePage';
 import ContinuePage from './components/continue/ContinuePage';
 import MicroLessons from './components/micro-lessons/MicroLessons';
-import { Toaster } from 'sonner';
+import { Toaster } from 'sonner'
 const App: React.FC = () => (
-  <ThemeProvider mode={'light'} platform={'core'}>
-    <CoreFonts />
-    <Toaster />
     <AuthProvider>
+    <Toaster />
       <Router>
         <Routes>
           <Route path='/' element={<LandingPage />} />
@@ -39,7 +35,6 @@ const App: React.FC = () => (
         </Routes>
       </Router>
     </AuthProvider>
-  </ThemeProvider>
 );
 
 export default App;
