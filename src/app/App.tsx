@@ -91,7 +91,10 @@ const App: React.FC<AppProps> = (config) => {
   }, [config.data]);
 
   return (
+    <ThemeProvider mode={'light'} platform={'core'}>
+      <CoreFonts />
 
+      {/* 🔥 Wrap whole app in AuthProvider */}
       <AuthProvider>
         <Router>
           <Routes>
@@ -110,6 +113,7 @@ const App: React.FC<AppProps> = (config) => {
           </Routes>
         </Router>
       </AuthProvider>
+    </ThemeProvider>
   );
 };
 

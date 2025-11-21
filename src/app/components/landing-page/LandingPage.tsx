@@ -28,7 +28,7 @@ export default function LandingPage() {
         <DividerWrapper>
           <Line />
           <DividerText>
-            Welcome to IAM Collective,, somwthing goes in here maybe a brief of what to expect
+            Welcome to IAM Collective,, something goes in here maybe a brief of what to expect
           </DividerText>
           <Line />
         </DividerWrapper>

@@ -41,15 +41,17 @@ export const OverlayText = styled.div`
   padding: 1.5rem;
 `;
 
-export const QuotedText = styled.blockquote`
+export const Header = styled.blockquote`
   position: relative;
-  font-size: 1.4rem;
+  font-size: 3rem;
+  font-weight: 2rem;
   line-height: 1.4;
   font-style: italic;
   text-align: center;
+  flex-direction: column;
   color: #444;
   margin: 2rem auto;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
 
   /* the borders */
   &::before,
@@ -117,18 +119,18 @@ export const Card = styled.div`
   align-items: center;
 `;
 
-export const CardText = styled.div`
-  max-width: 70%;
+export const LearnCardText = styled.div`
+  max-width: 80%;
 `;
 
-export const CardHeading = styled.h3`
-  font-size: 1.1rem;
+export const LearnCardHeading = styled.h3`
+  font-size: 2.5rem;
   color: #333;
-  font-weight: 600;
+  font-weight: 550;
 `;
 
-export const CardDescription = styled.p`
-  font-size: 0.85rem;
+export const LearnCardDescription = styled.p`
+  font-size: 1.8rem;
   color: #6b6b6b;
 `;
 
@@ -173,4 +175,51 @@ export const HomeIndicator = styled.div`
     background: #d31875;
     border-radius: 999px;
   }
+`;
+export const NextButton = styled.div`
+  padding: 14px 48px;
+  background-color: #fbd8e7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: black;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.9;
+  }
+`;
+
+export const ScrollableContent = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+`;
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+  margin: 32px 0;
 `;

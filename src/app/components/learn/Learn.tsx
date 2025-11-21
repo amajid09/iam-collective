@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { Home, GraduationCap, Heart, Fan, Book } from 'lucide-react';
+// import { Home, GraduationCap, Heart, Fan, Book } from 'lucide-react';
 import {
   ScreenContainer,
   ImageCard,
@@ -17,9 +17,25 @@ import {
   BottomNav,
   HomeIndicator,
 } from '../home/HomePage.styled';
-import { QuotedText } from './Learn.styled';
+import {
+  ButtonWrapper,
+  Header,
+  LearnCardDescription,
+  LearnCardHeading,
+  LearnCardText,
+  NextButton,
+  ScrollableContent,
+} from './Learn.styled';
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../bottom-nav/BottomNav';
+import {
+  BlueCard,
+  CentredCard,
+  OrangeCard,
+  PinkCard,
+  ServiceCardGridWrapper,
+  SubTitle,
+} from '../cards/Cards.style';
 
 const LearnScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -30,26 +46,53 @@ const LearnScreen: React.FC = () => {
 
   return (
     <ScreenContainer>
-      <ImageCard>
-        <OverlayText>
-          <QuotedText>This is a daily affirmation of support and positivity.</QuotedText>
-          <ProfileImage src='https://randomuser.me/api/portraits/women/44.jpg' alt='Profile' />
-        </OverlayText>
-      </ImageCard>
-
-      <SuggestedWrapper>
-        <SuggestedTitle>Suggested for you</SuggestedTitle>
-        <Card>
-          <CardText>
-            <CardHeading>Hello, I’m a card</CardHeading>
-            <CardDescription>
-              I am a card descriptor piece of text that gives context.
-            </CardDescription>
-            <CardLink>Call to action</CardLink>
-          </CardText>
-          <LotusEmoji>🌸</LotusEmoji>
-        </Card>
-      </SuggestedWrapper>
+      <ScrollableContent>
+        <Header>
+          Knowledge is strength. Your journey to empowerment through upskilling starts here.
+        </Header>
+        <ProfileImage src='https://randomuser.me/api/portraits/women/44.jpg' alt='Profile' />
+        <SubTitle>We curate content according to three categories:</SubTitle>
+        <ServiceCardGridWrapper>
+          <PinkCard>
+            <CentredCard>
+              <LearnCardText>
+                <LotusEmoji>🌸</LotusEmoji>
+                <LearnCardHeading>Mindfulness</LearnCardHeading>
+                <LearnCardDescription>
+                  Tools to help you master stress, get in touch with your inner voice, and record
+                  your journey.
+                </LearnCardDescription>
+              </LearnCardText>
+            </CentredCard>
+          </PinkCard>
+          <OrangeCard>
+            <CentredCard>
+              <LearnCardText>
+                <LotusEmoji>🌸</LotusEmoji>
+                <LearnCardHeading>Empowerment</LearnCardHeading>
+                <LearnCardDescription>
+                  Tools to help you manage and avoid conflict. Learn healthy response patterns, and
+                  identify red flags more effectively.
+                </LearnCardDescription>
+              </LearnCardText>
+            </CentredCard>
+          </OrangeCard>
+          <BlueCard>
+            <CentredCard>
+              <LearnCardText>
+                <LotusEmoji>🌸</LotusEmoji>
+                <LearnCardHeading>Life Skills</LearnCardHeading>
+                <LearnCardDescription>
+                  Tools to upskill yourself holistically and keep that work/life balance in check.
+                </LearnCardDescription>
+              </LearnCardText>
+            </CentredCard>
+          </BlueCard>
+        </ServiceCardGridWrapper>
+        <ButtonWrapper>
+          <NextButton>Next</NextButton>
+        </ButtonWrapper>
+      </ScrollableContent>
 
       {/* <BottomNav>
         <GraduationCap size={24} opacity={0.4} />

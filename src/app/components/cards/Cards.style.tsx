@@ -151,6 +151,17 @@ export const Title = styled.div`
   }}
 `;
 
+export const SubTitle = styled.div`
+  position: relative;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-style: italic;
+  text-align: center;
+  color: #444;
+  margin: 2rem auto;
+  padding: 1rem;
+`;
+
 export const SubTextContainer = styled.div`
   ${({ theme: { floats } }): DefaultTheme => {
     return css`
@@ -205,4 +216,71 @@ export const TextLink = styled.div`
 export const Link = styled(ExternalLink)`
   width: 0.75rem;
   height: 0.75rem;
+`;
+
+export const ServiceCardGridWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 50px;
+  @media (max-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  padding: 0 16px;
+  margin: 24px 0;
+`;
+
+export const CentredCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+`;
+export const PinkCard = styled.div`
+  background-color: #fbd8e7;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const BlueCard = styled.div`
+  background-color: #e1efff;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const OrangeCard = styled.div`
+  background-color: #ffe9d6;
+  padding: 1rem;
+  border-radius: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const PinkButton = styled.div`
+  width: 100%;
+  padding: 14px 0;
+  background-color: #ff4f9a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:active {
+    opacity: 0.9;
+  }
 `;

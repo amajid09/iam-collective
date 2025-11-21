@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable react/jsx-no-bind */
+/* eslint-disable */
 import React, { useEffect, useState } from 'react';
 import {
   PinkButton,
