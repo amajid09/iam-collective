@@ -9,7 +9,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Check out code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Validate PR Title
         uses: actions/github-script@v8
         with:

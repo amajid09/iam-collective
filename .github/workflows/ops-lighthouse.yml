@@ -13,7 +13,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.release.target_commitish }}
           token: ${{ secrets.GITHUB_TOKEN }}
