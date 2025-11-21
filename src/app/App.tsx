@@ -15,7 +15,7 @@ import AboutPage from './components/about-page/AboutPage';
 import ProfilePage from './components/profile-page/ProfilePage';
 import ContinuePage from './components/continue/ContinuePage';
 import MicroLessons from './components/micro-lessons/MicroLessons';
-import { Toaster } from 'sonner'
+import { Toaster } from 'sonner';
 const App: React.FC = () => (
   <ThemeProvider mode={'light'} platform={'core'}>
     <CoreFonts />

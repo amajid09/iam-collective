@@ -30,7 +30,7 @@ export const ModalContainer = styled.div`
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-`
+`;
 // Modal Box
 export const ModalContent = styled.div`
   overflow-y: auto;
