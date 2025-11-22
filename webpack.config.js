@@ -141,7 +141,12 @@ const devConfig = {
       publicPath: '/',
     }),
 
+    new Dotenv({
+      path: `./.env.dev`,
+    }),
+
     new ReactRefreshWebpackPlugin(),
+
   ],
 };
 
