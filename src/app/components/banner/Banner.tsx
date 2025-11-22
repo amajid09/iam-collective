@@ -26,7 +26,7 @@ const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
   const authors = ['Maya Angelou', 'Unknown', 'Unknown', 'Unknown', 'Unknown'];
 
   const sources = Object.values(backgrounds) as string[];
-
+  console.log('sources', sources);
   const images: Image[] = sources.map((src, i) => ({ src, title: titles[i], author: authors[i] }));
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -74,11 +74,10 @@ const Banner: React.FC<{ children: ReactElement }> = ({ children }) => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
-      key={images[0].src}
     >
       <SlideWrapper $activeIndex={activeIndex} $count={images.length}>
-        {images.map((img) => (
-          <BackgroundImage key={img.src} src={img.src} alt='Background' />
+        {images.map((img, index) => (
+          <BackgroundImage src={img.src} alt='Background' />
         ))}
       </SlideWrapper>
       <OverlayText>

@@ -90,7 +90,7 @@ const LearnScreen: React.FC = () => {
           </BlueCard>
         </ServiceCardGridWrapper>
         <ButtonWrapper>
-          <NextButton>Next</NextButton>
+          <NextButton to={'/micro-lessons'}>Next</NextButton>
         </ButtonWrapper>
       </ScrollableContent>
 

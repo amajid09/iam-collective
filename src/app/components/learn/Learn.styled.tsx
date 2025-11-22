@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ScreenContainer = styled.div`
@@ -176,7 +177,7 @@ export const HomeIndicator = styled.div`
     border-radius: 999px;
   }
 `;
-export const NextButton = styled.div`
+export const NextButton = styled(Link)`
   padding: 14px 48px;
   background-color: #fbd8e7;
   display: flex;
@@ -184,6 +185,7 @@ export const NextButton = styled.div`
   align-items: center;
   text-align: center;
   color: black;
+  text-decoration: none;
   border: none;
   border-radius: 12px;
   font-size: 16px;

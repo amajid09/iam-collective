@@ -1,7 +1,5 @@
 import styled, { DefaultTheme, css } from 'styled-components';
-import { Touch, Share, Token, Camera, Bundles } from '@mtnkente/paragon-icons';
 import ExternalLink from './ExternalLink';
-import Google from './Google';
 
 export const ServiceCardContainer = styled.div`
   ${({ theme: { floats } }): DefaultTheme => {
@@ -86,33 +84,7 @@ export const IconContainer = styled.div`
   }}
 `;
 
-export const GoogleIcon = styled(Google)`
-  width: 2rem;
-  height: 2rem;
-`;
 
-export const TouchIcon = styled(Touch)`
-  width: 2rem;
-  height: 2rem;
-`;
-
-export const ShareIcon = styled(Share)`
-  width: 2rem;
-  height: 2rem;
-`;
-export const CapacitorIcon = styled(Bundles)`
-  width: 2rem;
-  height: 2rem;
-`;
-export const CameraIcon = styled(Camera)`
-  width: 2rem;
-  height: 2rem;
-`;
-
-export const TokenIcon = styled(Token)`
-  width: 2rem;
-  height: 2rem;
-`;
 
 export const TextTab = styled.div`
   ${({ theme: { floats } }): DefaultTheme => {

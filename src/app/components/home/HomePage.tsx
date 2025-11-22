@@ -92,7 +92,7 @@ const HomeScreen: React.FC = () => {
         <SuggestedTitle>Welcome back, {user?.fullName || 'Friend'}!</SuggestedTitle>
         <SuggestedCardsContainer>
           {cardsData.map((card, index) => (
-            <Card key={index}>
+            <Card>
               <CardText>
                 <CardHeading>{card.headline}</CardHeading>
                 {card.subline && <CardDescription>{card.subline}</CardDescription>}

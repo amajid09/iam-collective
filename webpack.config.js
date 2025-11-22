@@ -90,22 +90,22 @@ const common = {
       dependencies: false,
       dependenciesCount: 100,
     }),
-    new CompressionPlugin({
-      filename: '[path][base].br',
-      algorithm: 'brotliCompress',
-      test: /\.(js|css|html|svg)$/,
-      compressionOptions: { level: 11 },
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-    new CompressionPlugin({
-      filename: '[path][base].gz',
-      algorithm: 'gzip',
-      test: /\.(js|css|html|svg)$/,
-      threshold: 10240,
-      minRatio: 0.8,
-    }),
-    
+    // new CompressionPlugin({
+    //   filename: '[path][base].br',
+    //   algorithm: 'brotliCompress',
+    //   test: /\.(js|css|html|svg)$/,
+    //   compressionOptions: { level: 11 },
+    //   threshold: 10240,
+    //   minRatio: 0.8,
+    // }),
+    // new CompressionPlugin({
+    //   filename: '[path][base].gz',
+    //   algorithm: 'gzip',
+    //   test: /\.(js|css|html|svg)$/,
+    //   threshold: 10240,
+    //   minRatio: 0.8,
+    // }),
+
     new webpack.ProvidePlugin({
       React: 'react',
       process: 'process/browser',
@@ -135,7 +135,14 @@ const devConfig = {
     publicPath: '/',
   },
 
-  plugins: [new ReactRefreshWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, './public/index.html'),
+      publicPath: '/',
+    }),
+
+    new ReactRefreshWebpackPlugin(),
+  ],
 };
 
 // Common production settings
@@ -160,22 +167,20 @@ const createProdConfig = (env) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, './public/index.html'),
-        templateParameters: {
-          PUBLIC_URL: '/', // ✅ for favicon, manifest, etc.
-        },
-      }),
-      new CopyWebpackPlugin({
-        patterns: [
-          {
-            from: path.resolve(__dirname, 'public'),
-            to: path.resolve(__dirname, 'dist'),
-            globOptions: {
-              ignore: ['**/index.html'], // since HtmlWebpackPlugin already handles it
-            },
+      publicPath: '/',
+      template: path.resolve(__dirname, './public/index.html'),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'public'),
+          to: path.resolve(__dirname, 'dist'),
+          globOptions: {
+            ignore: ['**/index.html'], // since HtmlWebpackPlugin already handles it
           },
-        ],
-      }),
+        },
+      ],
+    }),
     new webpack.container.ModuleFederationPlugin({
       shared: {
         react: { singleton: true, eager: true, requiredVersion: deps['react'] },
@@ -231,17 +236,7 @@ module.exports = (envVars) => {
   switch (env) {
     case 'dev':
       return merge(common, optimizationConfigs, createProdConfig('dev'));
-    case 'prod':
-      return merge(common, optimizationConfigs, createProdConfig('prod'));
-    case 'uat':
-      return merge(common, optimizationConfigs, createProdConfig('uat'));
-    case 'test':
-      return merge(common, optimizationConfigs, createProdConfig('test'));
-    case 'all':
-      return [merge(common, optimizationConfigs, createProdConfig('dev'))];
     default:
-      return merge(common, optimizationConfigs, devConfig);
+      return merge(common, devConfig);
   }
 };
-
-
