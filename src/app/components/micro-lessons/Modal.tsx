@@ -75,7 +75,7 @@ const Modal: React.FC = () => {
           <S.Section>
             <S.SectionTitle>📝 Reflection</S.SectionTitle>
             <S.SectionContent>{reflectionPrompt}</S.SectionContent>
-            <S.ReflectionInput placeholder='Take your time... your thoughts are safe here' />
+            <S.ReflectionInput placeholder='Take your time... your thoughts are safe here' id='reflection' />
           </S.Section>
           <S.SocialHook>{socialHook}</S.SocialHook>
           <S.CompleteButton onClick={closeButton}>

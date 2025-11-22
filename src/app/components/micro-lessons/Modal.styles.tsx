@@ -10,7 +10,6 @@ export const Modal = styled.div<{ active?: boolean }>`
   height: 100vh;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  padding: 20px;
   align-items: center;
   justify-content: center;
 `;
@@ -25,12 +24,12 @@ export const CustomToastWrapper = styled.div<{ $bgColor?: string; $textColor?: s
 export const ModalContainer = styled.div`
   background: white;
   border-radius: 24px;
-  max-width: 600px;
+  max-width: 75%;
   overflow: hidden;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-`;
+`
 // Modal Box
 export const ModalContent = styled.div`
   overflow-y: auto;
@@ -129,7 +128,7 @@ export const SectionContent = styled.p`
 
 // Reflection Input
 export const ReflectionInput = styled.textarea`
-  width: 100%;
+  max-width: 90%;
   padding: 16px;
   border: 2px solid #e2e8f0;
   border-radius: 12px;
@@ -172,11 +171,16 @@ export const CompleteButton = styled.button`
 `;
 
 // Social Hook
-export const SocialHook = styled.div`
+export const SocialHook = styled.button`
+all: unset;
+padding: 16px 32px;
+cursor: pointer;
   text-align: center;
   padding: 20px;
-  background: linear-gradient(135deg, #fbd8e7, 0%, #ff69b4 100%);
-  color: white;
+  border: 1px solid black;
+  color: black;
+  width: 80%;
+  /* background-color: #ff4f9a; */
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;

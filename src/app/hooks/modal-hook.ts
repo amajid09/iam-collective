@@ -58,6 +58,6 @@ const useModal = create<ModalProps>()(
 
 export const useModalOpen = (): boolean => useModal((state) => state.isOpen);
 export const useModalSelectedDay = (): number => useModal((state) => state.selectedDay);
-export const useModalCompletedDay = (): number => useModal((state) => state.selectedDay);
+export const useModalCompletedDay = (): number => useModal((state) => state.completedDay);
 export const useModalActions = (): ModalActions => useModal((state) => state.actions);
 export const useHasHydrated = (): boolean => useModal.persist.hasHydrated();
